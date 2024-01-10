@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Challenge1 {
@@ -95,6 +96,18 @@ public class Challenge1 {
             .map((employee) -> employee.salary)
             .reduce(0f, (acc, x) -> acc + x);
 
-        System.out.println(sumOfSalaries);
+        // System.out.println(sumOfSalaries);
+        Float totalDevSalaries = employees.stream() 
+            .filter((employee) -> employee.jobTitle == "developer")
+            .map((dev) -> dev.salary)
+            .reduce(0f, (acc, x) -> acc + x);
+
+        Long numOfDevs = employees.stream()
+            .filter((employee) -> employee.jobTitle =="developer")
+            .collect(Collectors.counting());
+
+        Float averageDevSalary = totalDevSalaries/numOfDevs;
+
+        System.out.println(averageDevSalary);
     }
 }
