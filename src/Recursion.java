@@ -17,9 +17,21 @@ public class Recursion {
         System.out.println(y);
         countUp(y + 1);
     }
-    public static void main(String[] args) {
-        countDown(10, 0);
-        countUp(0);
+
+    static int fibonacci(int x){
+        if(x <= 2){
+            return 1;
+        }
+
+        return fibonacci( x - 1) + fibonacci(x - 2);
         
+    }
+    public static void main(String[] args) {
+        // countDown(10, 0);
+        // countUp(0);
+        System.out.println("The 5th fibonacci number is: " + fibonacci(5));
+        System.out.println("The 10th fibonacci number is: " + fibonacci(10));
+        System.out.println("The 17th fibonacci number is: " + fibonacci(17));
+
     }
 }
